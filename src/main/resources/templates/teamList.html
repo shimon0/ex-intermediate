@@ -2,10 +2,13 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+
 <title>野球チーム一覧</title>
 </head>
 <body>
-<h2>野球チーム一覧</h2>
+<h4>野球チーム一覧</h4>
+
+
 	<table>
 		<tr th:each="team : ${teamList}">
 			<td>
@@ -13,6 +16,7 @@
 					<span th:text="${team.teamName}">dummy</span>
 				</a>
 			</td>
+		</tr>
 				
 	</table>
 </body>

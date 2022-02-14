@@ -37,6 +37,6 @@ public class TeamController {
 	public String showDetail(String id, Model model) {
 		Team team=teamService.showDetail(Integer.parseInt(id));
 		model.addAttribute("team", team);
-		return "redirect:/teamDetail";
+		return "teamDetail";
 	}
 }
