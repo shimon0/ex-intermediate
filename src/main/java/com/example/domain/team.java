@@ -4,7 +4,7 @@ package com.example.domain;
  * @author smone
  *
  */
-public class team {
+public class Team {
 	/** id(主キー) */
 	private Integer id;
 	/** 名前 */
@@ -17,6 +17,18 @@ public class team {
 	private String inauguration;
 	/** 歴史 */
 	private String history;
+	
+	public Team() {
+	}
+	
+	public Team(Integer id,String leagueName,String teamName,String headquarters,String inauguration,String history) {
+		this.id=id;
+		this.leagueName=leagueName;
+		this.teamName=teamName;
+		this.headquarters=headquarters;
+		this.inauguration=inauguration;
+		this.history=history;
+	}
 	
 	
 	public Integer getId() {
