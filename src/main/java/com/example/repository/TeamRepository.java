@@ -32,10 +32,26 @@ public class TeamRepository {
 
 	@Autowired
 	private NamedParameterJdbcTemplate template;
+	
+	public Team load(Integer id) {
+		String sql = "select * from teams where id=:id";
+		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
+		Team team = template.queryForObject(sql, param, TEAM_ROW_MAPPER);
+		return team;
+	}
+	
+	public List<Team> findAll() {
+		String sql = "SELECT * FROM employees ORDER BY TEAM_ROW_MAPPER DESC";
 
-	public Team load(String leagueName) {
-		String sql = "select * from teams where league_name=:leagueName";
-		SqlParameterSource param = new MapSqlParameterSource().addValue("leagueName", leagueName);
+		List<Team> teamList = template.query(sql, TEAM_ROW_MAPPER);
+
+		return teamList;
+	}
+	
+
+	public Team findTeam(String teamName) {
+		String sql = "select * from teams where team_name=:teamName";
+		SqlParameterSource param = new MapSqlParameterSource().addValue("teamName", teamName);
 		List<Team> teamList = template.query(sql, param, TEAM_ROW_MAPPER);
 		if(teamList.size()==0) {
 			return null;
