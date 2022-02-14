@@ -27,10 +27,16 @@ public class TeamController {
 		model.addAttribute("teamList",teamList);
 		return "teamList";
 	}
+	/**
+	 * 詳細ページの情報収集
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/showDetail")
 	public String showDetail(String id, Model model) {
 		Team team=teamService.showDetail(Integer.parseInt(id));
 		model.addAttribute("team", team);
-		return "redirect:/teamDtail";
+		return "redirect:/teamDetail";
 	}
 }
