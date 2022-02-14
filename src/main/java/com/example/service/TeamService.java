@@ -22,7 +22,7 @@ public class TeamService {
 		List<Team> teamList = repository.findAll();
 		return teamList;
 	}
-	public Team shoeDetail(Integer id) {
+	public Team showDetail(Integer id) {
 		Team team =repository.load(id);
 		return team;
 	}

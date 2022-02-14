@@ -49,6 +49,11 @@ public class TeamRepository {
 	}
 	
 
+	/**
+	 * @param teamName
+	 * @return
+	 * 予備メゾット（名前検索）
+	 */
 	public Team findTeam(String teamName) {
 		String sql = "select * from teams where team_name=:teamName";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("teamName", teamName);
