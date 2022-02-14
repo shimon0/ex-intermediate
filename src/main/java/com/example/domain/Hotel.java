@@ -56,7 +56,7 @@ public class Hotel {
 				+ ", nearestStation=" + nearestStation + ", price=" + price + ", parking=" + parking + "]";
 	}
 	
-	Hotel(){
+	 public Hotel(){
 	}
 	public Hotel(Integer id, String areaName, String hotelName, String address, String nearestStation, Integer price,
 			String parking) {
