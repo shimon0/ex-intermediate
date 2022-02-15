@@ -27,8 +27,8 @@ public class ClotheRepository {
 	@Autowired
 	private NamedParameterJdbcTemplate template;
 	
-	List<Clothe> searchSelect(Integer gender,String color){
-		String sql="SELECT * FROM clothes WHERE color= :gender AND gender= :color";
+	public List<Clothe> searchSelect(Integer gender,String color){
+		String sql="SELECT * FROM clothes WHERE color= :color AND gender= :gender";
 		SqlParameterSource param=new MapSqlParameterSource().addValue("color", color).addValue("gender", gender);
 		List<Clothe> clotheList=template.query(sql, param,CLOTHE_ROW_MAPPER);
 		return clotheList;
