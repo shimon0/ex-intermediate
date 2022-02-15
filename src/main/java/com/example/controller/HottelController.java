@@ -23,6 +23,7 @@ public class HottelController {
 	@RequestMapping("/search")
 	public String hotelSerch(String price,Model model) {
 		List<Hotel> hotelList = null;
+		// if(Objects.isNull(price))でよく使われる
 		if (price.isEmpty()) {
 			hotelList = service.findAll();
 		}else {try {

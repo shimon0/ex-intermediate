@@ -29,7 +29,7 @@ public class HotelRepository {
 	private NamedParameterJdbcTemplate template;
 	
 	public List<Hotel> findHotel(Integer price) {
-		String sql = "SELECT * FROM hotels WHERE price<= :price AND price>=0 ORDER BY price DESC;";
+		String sql = "SELECT * FROM hotels WHERE price<= :price ORDER BY price DESC;";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("price", price);
 	List<Hotel> hotelList=template.query(sql,param,HOTEL_ROW_WAPPER);
 		return hotelList;
