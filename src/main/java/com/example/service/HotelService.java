@@ -14,8 +14,8 @@ import com.example.repository.HotelRepository;
 public class HotelService {
 	@Autowired
 	private HotelRepository repository;
-	public List<Hotel> findSerch(Integer id){
-		List<Hotel> hotelList=repository.findHotel(id);
+	public List<Hotel> findSerch(Integer price){
+		List<Hotel> hotelList=repository.findHotel(price);
 		return hotelList;
 	}
 }

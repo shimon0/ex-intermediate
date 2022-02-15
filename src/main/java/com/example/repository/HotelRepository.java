@@ -27,7 +27,7 @@ public class HotelRepository {
 	private NamedParameterJdbcTemplate template;
 	
 	public List<Hotel> findHotel(Integer price) {
-		String sql = "SELECT * FROM hotels WHERE price<= :price";
+		String sql = "SELECT * FROM hotels WHERE price<= :price AND price>=0";
 		if(price==null) {
 			String sql2="SELECT * FROM hotels";
 			sql=sql2;
