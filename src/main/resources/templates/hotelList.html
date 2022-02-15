@@ -2,22 +2,41 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-
-<title>野球チーム一覧</title>
+<style>table,
+      td,
+      th {
+        width: 500px;
+        border: 1px solid ;
+        margin-top: 10px;
+      }
+      </style>
+<title>ホテル検索</title>
 </head>
 <body>
-<h4>野球チーム一覧</h4>
+<h2>ホテル検索</h2>
+
+<form th:action="@{/hotel/search}" method="POST">
+ <p th:if="${numberFormatError}" th:text="${numberFormatError}" style="color:red"></p>
+	<input type="text" name="price">円以下<br>
+	<button>検索</button>
+</form>
 
 
-	<table>
-		<tr th:each="team : ${teamList}">
-			<td>
-				<a th:href="@{/team/showDetail?id=} + ${team.id}">
-					<span th:text="${team.teamName}">dummy</span>
-				</a>
-			</td>
-		</tr>
+<table th:each="hotel: ${hotelList}">
+		 <tr>
+          <th>ホテル名</th>
+          <td th:text="${hotel.hotelName}"align="center"></td>
+        </tr>
+        <tr>
+          <th>最寄駅</th>
+          <td th:text="${hotel.nearestStation}" align="center"></td>
+        </tr>
+        <tr>
+          <th>価格</th>
+          <td th:text="${hotel.price}" align="center"></td>
+        </tr>
 				
 	</table>
+	
 </body>
 </html>

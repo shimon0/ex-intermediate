@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import com.example.domain.Hotel;
@@ -27,12 +29,14 @@ public class HotelRepository {
 	private NamedParameterJdbcTemplate template;
 	
 	public List<Hotel> findHotel(Integer price) {
-		String sql = "SELECT * FROM hotels WHERE price<= :price AND price>=0";
-		if(price==null) {
-			String sql2="SELECT * FROM hotels";
-			sql=sql2;
-		}
-		List<Hotel> hotelList=template.query(sql, HOTEL_ROW_WAPPER);
+		String sql = "SELECT * FROM hotels WHERE price<= :price AND price>=0 ORDER BY price DESC;";
+		SqlParameterSource param = new MapSqlParameterSource().addValue("price", price);
+	List<Hotel> hotelList=template.query(sql,param,HOTEL_ROW_WAPPER);
+		return hotelList;
+	}
+	public List<Hotel> findAll(){
+		String sql2="SELECT * FROM hotels ORDER BY price DESC;";
+		List<Hotel> hotelList=template.query(sql2, HOTEL_ROW_WAPPER);
 		return hotelList;
 	}
 }

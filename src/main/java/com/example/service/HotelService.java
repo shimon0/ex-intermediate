@@ -18,4 +18,8 @@ public class HotelService {
 		List<Hotel> hotelList=repository.findHotel(price);
 		return hotelList;
 	}
+	public List<Hotel> findAll(){
+		List<Hotel> hotelList=repository.findAll();
+		return hotelList;
+	}
 }

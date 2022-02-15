@@ -21,10 +21,20 @@ public class HottelController {
 		return "hotelList";
 	}
 	@RequestMapping("/search")
-	public String hotelSerch(Integer price,Model model) {
-		List<Hotel> hotelList=service.findSerch(price);
+	public String hotelSerch(String price,Model model) {
+		List<Hotel> hotelList = null;
+		if (price.isEmpty()) {
+			hotelList = service.findAll();
+		}else {try {
+			hotelList=service.findSerch(Integer.parseInt(price));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			model.addAttribute("numberFormatError", "※整数で指定してください");
+			e.printStackTrace();
+			return "hotelList";
+		}			
+		}
 		model.addAttribute("hotelList", hotelList);
 		return "hotelList";
-
 	}
 }
